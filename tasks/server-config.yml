@@ -116,7 +116,7 @@
 - name: Reload systemd if init script is deleted
   systemd:
     daemon_reload: yes
-  when: del_init_script|changed
+  when: del_init_script is changed
 
 - name: Start kong natively
   shell: >
