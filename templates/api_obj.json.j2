@@ -1,7 +1,7 @@
 {
     "name": "{{ kong_api_obj_name }}",
 {# START - params for 0.9.x and earlier #}
-{% if kong_version|version_compare('0.10.0', '<') %}
+{% if kong_version is version('0.10.0', '<') %}
 {% if kong_api_obj_request_host|default(false) %}
     "request_host": "{{ kong_api_obj_request_host }}",
 {% endif %}
@@ -14,7 +14,7 @@
 {# -#}
 
 {# START - params for 0.10.x and later #}
-{% if kong_version|version_compare('0.10.0', '>=') %}
+{% if kong_version is version('0.10.0', '>=') %}
 {% if kong_api_obj_hosts|default(false) %}
     "hosts": "{{ kong_api_obj_hosts }}",
 {% endif %}

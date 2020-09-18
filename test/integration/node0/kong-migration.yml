@@ -19,7 +19,7 @@
 
 - set_fact:
     kong_run_migration: true
-  when: v|success and kong_version|version_compare(kong_version_current, '>')
+  when: v|success and kong_version is version(kong_version_current, '>')
 
 - debug: msg="Run kong migration? - {{ kong_run_migration|default(false) }}"
 - debug: msg="Installed kong version - {{ kong_version_current }}"

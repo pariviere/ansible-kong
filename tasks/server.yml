@@ -18,7 +18,7 @@
     kong_rpm_pkg_url: "{{ kong_rpm_pkg_url_pre_0_11_x }}"
     kong_deb_pkg:     "kong-{{ kong_version }}.{{ ansible_distribution_release }}_all.deb"
     kong_rpm_pkg:     "kong-{{ kong_version }}.el7.noarch.rpm"
-  when: kong_version is version_compare('0.11.0', '<')
+  when: kong_version is version('0.11.0', '<')
 
 # Debian
 - name: Download kong deb package | Debian
@@ -69,7 +69,7 @@
 
 - name: Check for supported kong versions
   fail: msg="Kong {{ kong_version }} no longer supported"
-  when: kong_version is version_compare('0.11.0', '<')
+  when: kong_version is version('0.11.0', '<')
 
 - name: Kong Server Config & Start
   include_tasks: "server-config.yml"
